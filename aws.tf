@@ -1,32 +1,3 @@
-//aws compute configuration
-
-resource "aws_instance" "ec2test" {
-  ami = var.aws_image
-  instance_type = var.awsinstance_type
-  vpc_security_group_ids = [aws_security_group.awsfw.id]
-  key_name = "awspublickey"
-  tags = {Name = "Jenkins-Server"}
-  user_data = var.user_data
-}
-
-resource "aws_instance" "ec2tomcat" {
-  ami = var.aws_image
-  instance_type = var.awsinstance_type
-  vpc_security_group_ids = [aws_security_group.awsfw.id]
-  key_name = "awspublickey"
-  tags = {Name = "Tomcat_server"}
-  user_data = var.tomcat_user_data
-}
-
-resource "aws_instance" "ec2docker" {
-  ami = var.aws_image
-  instance_type = var.awsinstance_type
-  vpc_security_group_ids = [aws_security_group.awsfw.id]
-  key_name = "awspublickey"
-  tags = {Name = "Docker-Server"}
-  user_data = var.docker_user_data
-}
-
 resource "aws_instance" "ec2ansible" {
   ami = var.aws_image
   instance_type = var.awsinstance_type
