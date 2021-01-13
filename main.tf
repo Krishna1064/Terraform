@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_instance" "ec2test" {
   ami = "ami-0a91cd140a1fc148a"
   instance_type = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.Jenkins-SG.id]
+  vpc_security_group_ids = ["Jenkins-SG"]
   key_name = "TestEKS"
   iam_instance_profile = "EC2fullaccessRole"
   tags = {Name = "Jenkins-Server"}
