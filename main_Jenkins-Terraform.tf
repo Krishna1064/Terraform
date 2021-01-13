@@ -32,9 +32,6 @@ resource "aws_instance" "ec2test" {
    sudo apt install git -y
    sudo apt install apache2-utils -y
    EOF
-
-   provisioner "local-exec" {
-    command = "echo ${aws_instance.ec2test.private_ip} >> private_ips.txt"
   }
 }
 
