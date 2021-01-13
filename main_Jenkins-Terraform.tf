@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_instance" "ec2test" {
   ami = "ami-0a91cd140a1fc148a"
   instance_type = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.Jenkins-SG.id]
+  vpc_security_group_ids = ["Jenkins-SG"]
   key_name = "TestEKS"
   iam_instance_profile = "EC2fullaccessRole"
   tags = {Name = "Jenkins-Server"}
@@ -34,47 +34,6 @@ resource "aws_instance" "ec2test" {
    sudo apt upgrade -y
    sudo apt install ansible -y
    EOF
-
-   provisioner "local-exec" {
-    command = "echo ${aws_instance.ec2test.private_ip} >> private_ips.txt"
-  }
-}
-
-
-// EC2 firewall
-
-resource "aws_security_group" "Jenkins-SG" {
-
-    name = "Jenkins-SG"
-
-    ingress {
-      cidr_blocks = ["0.0.0.0/0"]
-      from_port = 80
-      protocol = "tcp"
-      to_port = 80
-    }
-
-    ingress {
-      cidr_blocks = ["0.0.0.0/0"]
-      from_port = 8080
-      protocol = "tcp"
-      to_port = 8080
-    }
-
-    ingress {
-      cidr_blocks = ["0.0.0.0/0"]
-      from_port = 22
-      protocol = "tcp"
-      to_port = 22
-    }
-
-    egress {
-      cidr_blocks = ["0.0.0.0/0"]
-      from_port = 0
-      protocol = "-1"
-      to_port = 0
-    }
-
 }
 
 output "PublicIP" {
