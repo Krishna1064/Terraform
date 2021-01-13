@@ -35,6 +35,7 @@ resource "aws_instance" "ec2test" {
 
    provisioner "local-exec" {
     command = "echo ${aws_instance.ec2test.private_ip} >> private_ips.txt"
+  }
 }
 
 output "PublicIP" {
