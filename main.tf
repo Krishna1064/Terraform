@@ -2,6 +2,7 @@ provider "aws" {
     region = "us-east-2"
 }
 
+/*
 resource "aws_instance" "ec2test" {
   ami = "ami-0a91cd140a1fc148a"
   instance_type = "t2.micro"
@@ -37,4 +38,4 @@ output "PublicIP" {
 value = aws_instance.ec2test.public_ip
 #  value = "${formatlist("%v", aws_instance.cZServers.*.public_ip)}"
 }
-
+*/
