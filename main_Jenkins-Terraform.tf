@@ -30,9 +30,6 @@ resource "aws_instance" "ec2test" {
    sudo apt-get update && sudo apt-get install terraform
    sudo apt install git -y
    sudo apt install apache2-utils -y
-   sudo apt update
-   sudo apt upgrade -y
-   sudo apt install ansible -y
    EOF
 }
 
